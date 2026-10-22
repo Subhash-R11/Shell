@@ -7,7 +7,7 @@ def main():
         if cmd == "exit":
             sys.exit(0)
         elif cmd[5:] in ["type","echo","exit"]:
-            print(f"{cmd[5:]}: is a shell builtin")
+            print(f"{cmd[5:]} is a shell builtin")
         elif cmd.startswith("echo "):
             print(cmd[5:])
         else:
