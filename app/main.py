@@ -1,4 +1,5 @@
 import sys
+import os
 
 def main():
     while True:
@@ -12,10 +13,22 @@ def main():
 
         elif command.startswith("type "):
             cmd = command[5:]
+
             if cmd in ["type","echo","exit"]:
                 print(f"{cmd} is a shell builtin")
             else:
-                print(f"{cmd} not found")
+                found = False
+
+                for path in os.environ["PATH"].split(os.pathsep):
+                    cmd_path = os.path.join(path, cmd)
+
+                    if os.path.isfile(cmd_path) and os.access(cmd_path, os.X_OK):
+                        print(f"{cmd} is {cmd_path}")
+                        found = True
+                        break
+                    
+                if not found:
+                    print(f"{cmd}: not found")
 
         elif command.startswith("echo "):
             print(command[5:])
