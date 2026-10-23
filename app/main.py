@@ -44,7 +44,7 @@ def main():
                 cmd_path = os.path.join(path, cmd)
 
                 if os.path.isfile(cmd_path) and os.access(cmd_path, os.X_OK):
-                    subprocess.run([cmd_path] + args[1:])
+                    subprocess.run([cmd] + args[1:],executable=cmd_path)
                     found = True
                     break
             if not found:
