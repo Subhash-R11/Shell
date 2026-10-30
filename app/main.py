@@ -19,7 +19,7 @@ def main():
         elif command.startswith("type "):
             cmd = command[5:]
 
-            if cmd in ["type","echo","exit"]:
+            if cmd in ["type","echo","exit","pwd"]:
                 print(f"{cmd} is a shell builtin")
             else:
                 found = False
