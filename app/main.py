@@ -16,10 +16,18 @@ def main():
         elif command == "pwd":
             print(os.getcwd())
 
+        elif command.startswith("cd "):
+            directory = command[3:].strip()
+            
+            if os.path.isdir(directory):
+                os.chdir(directory)
+            else:
+                print(f"cd: {directory}: No such file or directory")
+
         elif command.startswith("type "):
             cmd = command[5:]
 
-            if cmd in ["type","echo","exit","pwd"]:
+            if cmd in ["type","echo","exit","pwd","cd"]:
                 print(f"{cmd} is a shell builtin")
             else:
                 found = False
