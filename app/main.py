@@ -13,6 +13,9 @@ def main():
         if command == "exit":
             sys.exit(0)
 
+        elif command == "pwd":
+            print(os.getcwd())
+
         elif command.startswith("type "):
             cmd = command[5:]
 
